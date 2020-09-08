@@ -2,7 +2,7 @@
 
 Parallelize your workflow.
 
-<!-- Ascii cinema -->
+![Demo gif](resources/demo.gif)
 
 ## What is it?
 This script will help your workflow by parallelizing tasks and
