@@ -99,4 +99,5 @@ print "    $runcmd\n" if $verbose;
 
 # Actual run.
 `$runcmd`;
+#`tmux attach`;
 `tmux attach` if (not defined $attach or $attach ne '1');
