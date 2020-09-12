@@ -79,6 +79,7 @@ GetOptions ("help|h"      => \$help,
 )
 or die("Error in command line arguments\n");
 my $command=$ENV{'TMUX_SPLITTER_CMD'};
+my $attach=$ENV{'TMUX_SPLITTER_NO_ATTACH'};
 
 usage() if $help or $command eq "" or $#ARGV < 0;
 
@@ -98,4 +99,4 @@ print "    $runcmd\n" if $verbose;
 
 # Actual run.
 `$runcmd`;
-`tmux attach`;
+`tmux attach` if (not defined $attach or $attach ne '1');
