@@ -26,11 +26,11 @@ use Getopt::Long;
 
 # Print help and how to use the program
 sub usage {
-    print STDERR "$0 [--help | -h] [--verbose | -v] <arguments>\n";
+    print STDERR "$0 [--help | -h] [--verbose | -v] [arguments]\n";
     print STDERR "options:\n";
     print STDERR "    -h --help     Show this help\n";
     print STDERR "    -v --verbose  Print more information\n";
-    print STDERR "    arguments     Arguments to launch tmux with\n";
+    print STDERR "    arguments     Arguments to launch command with\n";
     print STDERR "    The command is read from the environment variable TMUX_SPLITTER_CMD\n";
     exit 1
 }
