@@ -40,7 +40,9 @@ sub tmux_send_key_command {
     my $out = "send-keys ";
     my ($command, $args) = @_;
     $out .= "' ";
-    $out .= "$command \"$ARGV[$_]\" ";
+    $out .= "( $command ";
+    $out .= "\"$args\"" if defined $args and $args ne "";
+    $out .= " )";
     # Error line
     $out .= "|| ( echo \"Failed! Press Enter to exit\"; read _ );";
     # Exit tmux pane
@@ -81,12 +83,12 @@ or die("Error in command line arguments\n");
 my $command=$ENV{'TMUX_SPLITTER_CMD'};
 my $attach=$ENV{'TMUX_SPLITTER_NO_ATTACH'};
 
-usage() if $help or $command eq "" or $#ARGV < 0;
+usage() if $help or $command eq "";
 
 print "[$command]\n" if $verbose;
 
 # Run the first command
-$runcmd .= tmux_send_key_command($command, $ARGV[$_]);
+$runcmd .= tmux_send_key_command($command, $ARGV[0]);
 # Run the other commands and split the screen
 for (1..$#ARGV) {
     $runcmd .= tmux_splitw();
